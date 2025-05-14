@@ -4,6 +4,8 @@ public with sharing class addtion_number {
         integer b= 2;
         integer sum = a+b;
         system.debug('sum = ' +sum);
+        system.debug(a);
+        system.debug(b);
 
     }
 }
