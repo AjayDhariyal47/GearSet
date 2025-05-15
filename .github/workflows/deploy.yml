@@ -1,0 +1,34 @@
+name: Gearset Deployment on Windows
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: windows-latest  # Changed to Windows runner
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        
+      - name: Set Up Curl on Windows
+        run: |
+          choco install curl -y  # Install curl using Chocolatey
+
+      - name: Trigger Gearset Deployment
+        run: |
+          curl -X POST ^
+            -H "Authorization: token ${{ secrets.GEARSET_API_TOKEN }}" ^
+            -H "Content-Type: application/json" ^
+            -d "{}" ^
+            https://api.gearset.com/public/automation/continuous-integration-jobs/12345/run
+        shell: cmd
+
+      - name: Check Deployment Status
+        run: |
+          curl -X GET ^
+            -H "Authorization: token ${{ secrets.GEARSET_API_TOKEN }}" ^
+            https://api.gearset.com/public/automation/continuous-integration-jobs/12345/status
+        shell: cmd
