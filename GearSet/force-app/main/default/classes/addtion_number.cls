@@ -6,6 +6,7 @@ public with sharing class addtion_number {
         system.debug('sum = ' +sum);
         system.debug(a);
         system.debug(b);
+        system.debug(sum);
 
     }
 }
