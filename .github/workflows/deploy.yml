@@ -23,12 +23,12 @@ jobs:
             -H "Authorization: token ${{ secrets.GEARSET_API_TOKEN }}" ^
             -H "Content-Type: application/json" ^
             -d "{}" ^
-            https://api.gearset.com/public/automation/continuous-integration-jobs/12345/run
+            https://api.gearset.com/public/automation/continuous-integration-jobs/ae7ab9a1-d039-4cb6-867c-257157abb116/run
         shell: cmd
 
       - name: Check Deployment Status
         run: |
           curl -X GET ^
             -H "Authorization: token ${{ secrets.GEARSET_API_TOKEN }}" ^
-            https://api.gearset.com/public/automation/continuous-integration-jobs/12345/status
+            https://api.gearset.com/public/automation/continuous-integration-jobs/ae7ab9a1-d039-4cb6-867c-257157abb116/status
         shell: cmd
